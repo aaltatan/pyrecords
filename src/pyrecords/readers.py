@@ -1,6 +1,6 @@
 """Data readers: turn a data file into records, picked by file extension.
 
-`readers` maps a file extension to a function that gives a list of records.
+Two registries: `readers` give a list of records, `object_readers` give a single record.
 """
 
 import json
@@ -84,6 +84,9 @@ class ReaderRegistry[T]:
 readers = ReaderRegistry[Data]()
 """Readers of a list of records, used by the `single` and `multiple` commands."""
 
+object_readers = ReaderRegistry[DataItem]()
+"""Readers of a single record, used by the `object` command."""
+
 
 @readers.reader("xlsx")
 def read_excel(filepath: Path) -> Data:
@@ -140,6 +143,24 @@ def read_json(filepath: Path) -> Data:
         return data
 
     message = "JSON data must be a list of objects"
+    raise ValueError(message)
+
+
+@object_readers.reader("json")
+def read_json_object(filepath: Path) -> DataItem:
+    """Read a UTF-8 JSON file holding a single object.
+
+    Raises:
+        ValueError: The file is not valid JSON, or not an object.
+
+    """
+    with filepath.open(encoding="utf-8") as f:
+        data = json.load(f)
+
+    if _is_item(data):
+        return data
+
+    message = "JSON data must be an object"
     raise ValueError(message)
 
 

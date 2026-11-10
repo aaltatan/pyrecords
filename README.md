@@ -22,7 +22,7 @@ groups = group_by_data(data, ["city"])  # [{"city": "Homs", "items": [...]}, ...
 
 | Module | What it does |
 | --- | --- |
-| `readers` | `readers` (`xlsx`, `json` → list of records), picked by extension |
+| `readers` | `readers` (`xlsx`, `json` → list of records) and `object_readers` (`json` → one record), picked by extension |
 | `transformers` | `order_by_data` (via [pyordering](https://github.com/aaltatan/pyordering); empty values last), `filter_data`, `group_by_data` |
 | `filter_rules` | `rules`: a [pyspecification](https://github.com/aaltatan/pyspecification) registry of `int__gt`, `string__icontains`, `date__ge`, ... and `get_compiler()` for `all` / `any` filter schemas |
 

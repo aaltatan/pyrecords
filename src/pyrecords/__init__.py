@@ -2,7 +2,7 @@
 
 from .filter_rules import get_compiler, rules
 from .models import Data, DataItem
-from .readers import ExtensionNotSupportedError, ReaderRegistry, readers
+from .readers import ExtensionNotSupportedError, ReaderRegistry, object_readers, readers
 from .transformers import OrderByKey, filter_data, group_by_data, order_by_data
 
 __all__ = [
@@ -14,6 +14,7 @@ __all__ = [
     "filter_data",
     "get_compiler",
     "group_by_data",
+    "object_readers",
     "order_by_data",
     "readers",
     "rules",

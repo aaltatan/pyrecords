@@ -5,7 +5,7 @@ import openpyxl
 import pytest
 
 from pyrecords.models import Data
-from pyrecords.readers import ExtensionNotSupportedError, ReaderRegistry, readers
+from pyrecords.readers import ExtensionNotSupportedError, ReaderRegistry, object_readers, readers
 
 
 class TestRegistry:
@@ -108,3 +108,21 @@ class TestReadJson:
         path.write_text("[{")
         with pytest.raises(json.JSONDecodeError):
             readers["json"](path)
+
+
+class TestReadJsonObject:
+    def test_reads_object(self, tmp_path: Path) -> None:
+        path = tmp_path / "one.json"
+        path.write_text('{"name": "Rama"}')
+        assert object_readers["json"](path) == {"name": "Rama"}
+
+    @pytest.mark.parametrize("content", ['[{"name": "Rama"}]', '"text"', "1"])
+    def test_not_an_object_raises(self, tmp_path: Path, content: str) -> None:
+        path = tmp_path / "bad.json"
+        path.write_text(content)
+        with pytest.raises(ValueError, match="an object"):
+            object_readers["json"](path)
+
+    def test_xlsx_not_supported(self) -> None:
+        with pytest.raises(ExtensionNotSupportedError):
+            object_readers["xlsx"]
