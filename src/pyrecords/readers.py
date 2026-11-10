@@ -1,6 +1,6 @@
 """Data readers: turn a data file into records, picked by file extension.
 
-Two registries: `readers` give a list of records, `object_readers` give a single record.
+`readers` maps a file extension to a function that gives a list of records.
 """
 
 import json
