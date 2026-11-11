@@ -1,6 +1,6 @@
 [project]
 name = "pyrecords"
-version = "0.2.0"
+version = "0.3.0"
 description = "Read records from Excel or JSON, then order, filter (JSON rules) and group them."
 readme = "README.md"
 license = "GPL-3.0-or-later"
