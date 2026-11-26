@@ -1,0 +1,84 @@
+site_name: pyrecords
+site_description: Read records from Excel or JSON, then order, filter (with JSON rules) and group them.
+site_url: https://aaltatan.github.io/pyrecords/
+repo_url: https://github.com/aaltatan/pyrecords
+repo_name: aaltatan/pyrecords
+edit_uri: edit/main/docs/
+copyright: GPL-3.0-or-later
+
+theme:
+  name: material
+  icon:
+    logo: material/table
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.action.edit
+    - toc.follow
+
+nav:
+  - Home: index.md
+  - Installation: install.md
+  - User guide:
+      - guide/index.md
+      - Reading files: guide/reading.md
+      - Ordering: guide/ordering.md
+      - Filtering: guide/filtering.md
+      - Grouping: guide/grouping.md
+      - Extending: guide/extending.md
+  - Recipes: recipes.md
+  - Reference:
+      - reference/index.md
+      - API: reference/api.md
+      - Filter format and rules: reference/filters.md
+      - Exceptions: reference/exceptions.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/aaltatan/pyrecords
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/pyrecords/
