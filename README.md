@@ -1,5 +1,7 @@
 # pyrecords
 
+**Documentation: <https://aaltatan.github.io/pyrecords/>**
+
 Read records (`list[dict]`) from Excel or JSON, then order, filter and group them. Extracted
 from [templify](https://github.com/aaltatan/templify) so other CLIs can share it.
 
